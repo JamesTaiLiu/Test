@@ -2,42 +2,27 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
+  <script src="https://d3js.org/d3.v4.min.js"></script>
   <title>Document</title>
 </head>
 <body>
- 
-<!-- <!DOCTYPE html> -->
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <title>Document</title>
-</head>
-<body>
- 
-<!-- <!DOCTYPE html> -->
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <title>Document</title>
-</head>
-<body>
+ 	
+<script type="text/javascript">
+var width = 1024;
+var height = 768;
+var ctrl = d3.select("body").append("svg").attr("width", width).attr("height", height);
+d3.csv("./yen.csv", 
+	function(data)
+	{
+		var ln = data.length;
+		console.log(data);
+		var maxy = d3.max(data, function(d){ return d.selling; });
+		var lines = d3.line().x(function(d,i){return i*(width/ln);}).y(function(d){return height-d.selling*(height/maxy)});
+		ctrl.append("path").data([data]).attr("d", lines).attr("stroke", "red").attr("fill", "none");
+	}
 
-  <svg width="500" height="500">
-  <circle cx="300" cy="300" r="200" stroke="green"  fill="black" />
-  <circle cx="300" cy="300" r="150" stroke="green"  fill="red" />
-  <circle cx="300" cy="300" r="100" stroke="green"  fill="black" />
-  <circle cx="300" cy="300" r="50" stroke="green"  fill="red" />
-  <line x1="300" y1="300" x2="160" y2="160" style="stroke:rgb(10,100,10);stroke-width:"1" />
-  <line x1="300" y1="300" x2="100" y2="300" style="stroke:rgb(10,100,10);stroke-width:"1" />                               
-  <line x1="260" y1="330" x2="150" y2="430" style="stroke:rgb(10,100,10);stroke-width:"1" />                               <line x1="300" y1="300" x2="300" y2="100" style="stroke:rgb(10,100,10);stroke-width:"1" />  
-  <line x1="300" y1="300" x2="300" y2="600" style="stroke:rgb(10,100,10);stroke-width:"1" />    
-  <line x1="300" y1="300" x2="440" y2="440" style="stroke:rgb(10,100,10);stroke-width:"1" />
-   <line x1="300" y1="300" x2="600" y2="300" style="stroke:rgb(10,100,10);stroke-width:"1" />                                 <line x1="300" y1="300" x2="450" y2="170" style="stroke:rgb(10,100,10);stroke-width:"1" />                                             
-                                                                                         
-</svg>
-
-
+);
+</script>
+  
 </body>
 </html>
-
-
