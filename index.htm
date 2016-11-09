@@ -15,9 +15,9 @@ d3.csv("./yen.csv",
 	function(data)
 	{
 		var ln = data.length;
-		console.log(data^10000);
+		console.log(data);
 		var maxy = d3.max(data, function(d){ return d.Selling; });
-		var lines = d3.line().x(function(d,i){return i*(width/ln);}).y(function(d){return height-d.Selling*(height/maxy)});
+		var lines = d3.line().x(function(d,i){return i*(width/ln);}).y(function(d){return height-d.Selling*(height/maxy)*10});
 		ctrl.append("path").data([data]).attr("d", lines).attr("stroke", "red").attr("fill", "none");
 	}
 
