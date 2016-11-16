@@ -2,7 +2,7 @@ function jamestailiu2(){
 var width = 1024;
 var height = 768;
 var ctrl = d3.select("body").append("svg").attr("width", width).attr("height", height);
-d3.csv("https://github.com/JamesTaiLiu/Test/tree/master/data/yen.csv", 
+d3.csv("https://jamestailiu.github.io/Test/data/yen.csv", 
 	function(data)
 	{
 		var ln = data.length;
